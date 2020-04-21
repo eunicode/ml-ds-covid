@@ -1,0 +1,1 @@
+alert("Seen an example of embedded JS!");
