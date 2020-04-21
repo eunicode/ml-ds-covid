@@ -103,15 +103,18 @@ def main():
 
     # If POST request, refresh homepage
     if flask.request.method == "POST":
-        # Save user input
-        sex = flask.request.form.get("sex", None)
-        sex = sex_dict[sex]
+        # Get user input
+        form_dict = flask.request.form
+        # print(form_dict)
 
-        # temperature = flask.request.form["temperature"]
-        age = flask.request.form["age"]
-        country = flask.request.form["country"]
-        province = flask.request.form["province"]
-        infection_case = flask.request.form["infection_case"]
+        sex = int(form_dict["sex"])
+        age = int(form_dict["age"])
+        country = int(form_dict["country"])
+        province = int(form_dict["province"])
+        infection_case = int(form_dict["infection_case"])
+
+        # Make series to pass to model
+        # input_variables = [[sex, age, country, province, infection_case]]
 
         # Make DataFrame to pass to model
         input_variables = pd.DataFrame(
@@ -121,19 +124,28 @@ def main():
             index=["input"],
         )
 
-        # Call the model's predict function
+        # Call the model's predict() function
         prediction = model.predict(input_variables)[0]
-        prediction_prob = model.predict_proba(input_variables)[0]
         # 0 = probability the label is 0, 1 = probability the label is 1
+        # print(f"Test prediction {prediction}")
 
-        print(f"Test prediction {prediction}")
-
+        # Call the model's predict_proba() function
+        prediction_prob = model.predict_proba(input_variables)[0][1]
+        prediction_prob = round(prediction_prob * 100, 2)
+        # prediction_prob = round((1 - prediction_prob) * 100)
         # Re-render the homepage, display previous input, prediction and prediction probability
         # Pass variables
         return flask.render_template(
             "main.html",
-            original_input={"Sex": sex, "Age": age, "Country": country,},
+            original_input={
+                "Sex": sex,
+                "Age": age,
+                "Country": country,
+                "Province": province,
+                "Infection Case": infection_case,
+            },
             result=prediction,
+            result_prob=prediction_prob,
         )
 
 

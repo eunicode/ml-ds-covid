@@ -19,29 +19,103 @@
   <form action="{{ url_for('main') }}" method="POST">
     <fieldset>
       <legend>Input values:</legend>
-      Sex:
-      <!-- <input name="temperature" type="number" required /> -->
-      <select id="sexSelect" name="sex">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-      <br />
-      <br />
-      <!-- [sex, age, country, province, infection_case] -->
-      Age:
-      <input name="age" type="number" required />
-      <br />
-      <br />
-      Country:
-      <input name="country" type="number" required />
-      <br />
-      <br />
-      Province:
-      <input name="province" type="number" required />
-      <br />
-      <br />
-      Infection Source:
-      <input name="infection_case" type="number" required />
+
+      <div class="form-group">
+        <label for="sexSelect">Select your sex: </label>
+        <select id="sexSelect" name="sex">
+          <option value="0">Male</option>
+          <option value="1">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ageSelect">Select your age: </label>
+        <select id="ageSelect" name="age">
+          <option value="0">> 10</option>
+          <option value="1">teens</option>
+          <option value="2">20s</option>
+          <option value="3">30s</option>
+          <option value="4">40s</option>
+          <option value="5">50s</option>
+          <option value="6">60s</option>
+          <option value="7">70s</option>
+          <option value="8">80s</option>
+          <option value="9">90s</option>
+          <option value="10">100s</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="countrySelect">Select last visited country: </label>
+        <select id="countrySelect" name="country">
+          <option value="0">Korea</option> </option
+          ><option value="1">China</option>
+          <option value="2">United States</option>
+          <option value="3">France</option>
+          <option value="4">Thailand</option>
+          <option value="5">Canada</option>
+          <option value="6">Switzerland</option>
+          <option value="7">Indonesia</option>
+          <option value="8">Mongolia</option>
+          <option value="9">Spain</option>
+          <option value="10">100s</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="provinceSelect">Select the province you live in: </label>
+        <select id="provinceSelect" name="province">
+          <option value="0">Seoul</option>
+          <option value="1">Busan</option>
+          <option value="2">Daegu</option>
+          <option value="3">Gwangju</option>
+          <option value="4">Incheon</option>
+          <option value="5">Daejeon</option>
+          <option value="6">Ulsan</option>
+          <option value="7">Sejong</option>
+          <option value="8">Gyeonggi-do</option>
+          <option value="9">Gangwon-do</option>
+          <option value="10">Chungcheongbuk-do</option>
+          <option value="11">Chungcheongnam-do</option>
+          <option value="12">Jeollabuk-do</option>
+          <option value="13">Jeollanam-do</option>
+          <option value="14">Gyeongsangbuk-do</option>
+          <option value="15">Gyeongsangnam-do</option>
+          <option value="16">Jeju-do</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="caseSelect"
+          >Select your infection source, or the cluster your infection was
+          traced to:
+        </label>
+        <select id="caseSelect" name="infection_case">
+          <option value="0">Overseas inflow</option>
+          <option value="1">Contact with patient</option>
+          <option value="2">Seongdong-gu APT</option>
+          <option value="3">Etc</option>
+          <option value="4">Eunpyeong St. Mary's Hospital</option>
+          <option value="5">Shincheonji Church</option>
+          <option value="6">Dongan Church</option>
+          <option value="7">Guro-gu Call Center</option>
+          <option value="8">Onchun Church</option>
+          <option value="9">Cheongdo Daenam Hospital</option>
+          <option value="10">Suyeong-gu Kindergarten</option>
+          <option value="11">Ministry of Oceans and Fisheries</option>
+          <option value="12">Gym facility in Cheonan</option>
+          <option value="13">Gym facility in Sejong</option>
+          <option value="14">River of Grace Community Church</option>
+          <option value="15">Gyeongsan Seorin Nursing Home</option>
+          <option value="16">Gyeongsan Cham Joeun Community Center</option>
+          <option value="17">Gyeongsan Jeil Silver Town</option>
+          <option value="18">Bonghwa Pureun Nursing Home</option>
+          <option value="19">Pilgrimage to Israel</option>
+          <option value="20">Milal Shelter</option>
+          <option value="21">Geochang Church</option>
+          <option value="22">Changnyeong Coin Karaoke</option>
+        </select>
+      </div>
 
       <input type="submit" />
     </fieldset>
@@ -50,17 +124,9 @@
   <div class="result" align="center">
     {% if result is defined %}
     <p>
-      Our model predicts that you have a {{ result }}% chance of Covid-19
+      Our model predicts that you have a {{ result_prob }}% chance of Covid-19
       fatality.
     </p>
-    <p>Our model's prediction accuracy is .</p>
     {% endif %}
-    <!-- {% if result %} {% for variable, value in original_input.items() %}
-    Predicted number of x in use:
-    <p style="font-size: 50px;">{{ result }}</p>
-    <b>{{ variable }}</b> : {{ value }} {% endfor %}
-    <br />
-    <br />
-    {% endif %} -->
   </div>
 </html>
