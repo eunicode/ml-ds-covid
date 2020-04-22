@@ -1,0 +1,75 @@
+/*--------------------------------------------------------------
+General styling
+--------------------------------------------------------------*/
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #384047;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+section {
+  margin-top: 3rem;
+}
+
+legend {
+  font-size: 1.4em;
+  margin: 15px 0;
+}
+
+label {
+  margin-bottom: 8px;
+  margin-top: 10px;
+  display: block;
+}
+
+select {
+  /* border: none;  */
+  /* font-size: 16px; */
+  height: auto;
+  width: 100%;
+}
+
+input[type="submit"] {
+  border-radius: 5px;
+  margin: 1.5em 0 1em 0;
+  font-size: 1.2em;
+}
+
+img {
+  max-width: 75%;
+  display: block;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-text {
+  color: #4bc970;
+}
+
+.rubric {
+  font-style: italic;
+}
+/*--------------------------------------------------------------
+Basic responsive layout for all browsers:
+--------------------------------------------------------------*/
+
+body {
+  max-width: 45rem;
+  margin: 10px auto;
+}

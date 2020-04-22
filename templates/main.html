@@ -3,7 +3,7 @@
 
 <head>
   <title>South Korean Covid-19 Fatality Model</title>
-  <link rel="stylesheet" href="/static/css/normalize.min.css">
+  <link rel="stylesheet" href="/static/css/normalize.css">
   <link rel="stylesheet" href="/static/css/main.css">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,15 +13,18 @@
   <h1>Covid-19 Fatality Prediction Web App for South Korean Hospital</h1>
 
   <section class="form-container">
-    <h2>Covid-19 Fatality Prediction</h2>
-    <p>Rubric: Non-descriptive method, decision-support functionality, interactive Queries, implementation of
+    <h2>Covid-19 Fatality Prediction Model</h2>
+    <h4>Select patient's epidemiological features to predict their probability of fatality from Covid-19. </h4>
+    <p>If their fatality probability is greater than 30%, they will be classified as high risk and put into ICU.</p>
+    <p class="rubric">Rubric: Non-descriptive method, decision-support functionality, interactive queries,
+      implementation of
       machine-learning methods and algorithms</p>
 
     <form action="{{ url_for('main') }}" method="POST">
       <legend>Input values:</legend>
 
       <div class="form-group">
-        <label for="sexSelect">Select your sex: </label>
+        <label for="sexSelect">Select patient's sex: </label>
         <select id="sexSelect" name="sex">
           <option value="0">Male</option>
           <option value="1">Female</option>
@@ -29,7 +32,7 @@
       </div>
 
       <div class="form-group">
-        <label for="ageSelect">Select your age: </label>
+        <label for="ageSelect">Select patient's age: </label>
         <select id="ageSelect" name="age">
           <option value="0">> 10</option>
           <option value="1">teens</option>
@@ -46,7 +49,7 @@
       </div>
 
       <div class="form-group">
-        <label for="countrySelect">Select last visited country: </label>
+        <label for="countrySelect">Select patient's last visited country: </label>
         <select id="countrySelect" name="country">
           <option value="0">Korea</option>
           </option>
@@ -64,7 +67,7 @@
       </div>
 
       <div class="form-group">
-        <label for="provinceSelect">Select the province you live in: </label>
+        <label for="provinceSelect">Select patient's city/province: </label>
         <select id="provinceSelect" name="province">
           <option value="0">Seoul</option>
           <option value="1">Busan</option>
@@ -87,7 +90,7 @@
       </div>
 
       <div class="form-group">
-        <label for="caseSelect">Select your infection source, or the cluster your infection was
+        <label for="caseSelect">Select patient's infection source, or the cluster the patient's infection was
           traced to:
         </label>
         <select id="caseSelect" name="infection_case">
@@ -123,28 +126,160 @@
 
     <div class="result" align="center">
       {% if result is defined %}
-      <p>
-        Our model predicts that you have a {{ result_prob }}% chance of Covid-19
+      <h3 class="result-text">
+        Our model predicts that the patient has a {{ result_prob }}% chance of Covid-19
         fatality.
-      </p>
+      </h3>
       {% endif %}
     </div>
 
-    <div>
-      <h4>Accuracy of our Model</h4>
+    <!-- <div>
+      <h4>Accuracy of our binary classification prediction model</h4>
       <p>Rubric: Evaluate accuracy of the data product</p>
-    </div>
+    </div> -->
   </section>
 
   <section>
-    <h2>Data Visualization and Exploration</h2>
-    <p>Rubric: Data visualization functionalities for data exploration and inspection, three visualization types</p>
+    <h2>Data Visualization: Data Exploration and Analysis</h2>
+    <p class="rubric">Rubric: Data visualization functionalities for data exploration and inspection, three
+      visualization types,
+      descriptive method</p>
+    <p>Our prediction model was trained on a <a href="https://www.kaggle.com/kimjihoo/coronavirusdataset">Kaggle
+        dataset</a> that contains epidemiological data of Covid-19 patients in South Korea.</p>
+    <p>After cleaning and optimizing, our dataset contains 2,319 samples. The case fatality rate for our dataset is
+      1.2% (28 out
+      2,319).</p>
+    <!-- <img src="{{url_for('static',filename='images/corona.jpg')}}" class="img-fluid h-100" alt="Responsive image"> -->
+    <img src="/static/img/gender-pie.png" alt="">
+    <p>54.4% of samples are female (1,261), 45.6% are male (1,058).</p>
+    <img src="/static/img/gender-fatality.png" alt="">
+    <p>Cross tabulation of sex and fatality: 1,253 females survived and 8 females died, while 1,038 males survived and
+      20
+      males died. </p>
+    <p>Males have a higher case fatality rate.</p>
+    <img src="/static/img/age-bar.png" alt="">
+    <p>The twenties age group has the highest frequency in this dataset with 533 patients.</p>
+    <p>Patients by age group</p>
+    <ul>
+      <li>0 = under 10 = 40 patients</li>
+      <li>1 = teens = 102 patients</li>
+      <li>2 = twenties = 533 patients</li>
+      <li>3 = thirties = 337 patients</li>
+      <li>4 = forties = 355 patients</li>
+      <li>5 = fifties = 417 patients</li>
+      <li>6 = sixties = 280 patients</li>
+      <li>7 = seventies = 138 patients</li>
+      <li>8 = eighties = 92 patients</li>
+      <li>9 = nineties = 24 patients</li>
+      <li>10 = hundreds = 1 patients</li>
+    </ul>
+    <img src="/static/img/age-histogram.png" alt="">
+    <p>This is a histogram. It is similar to the bar chart above, except that a histogram groups numbers into ranges. A
+      histogram shows the shape and spread of continuous sample data.</p>
+    <p>The second age range contains the most patients.</p>
+    <img src="/static/img/age-fatality.png" alt="">
+    <p>Patients in their nineties had the highest case fatality rate, 14.3% (3 out of 21).</p>
+    <p>Cross tabulation of age and fatality</p>
+    <ul>
+      <li>0 = under 10 = 40 survivals, 0 deaths</li>
+      <li>1 = teens = 102 survivals, 0 deaths</li>
+      <li>2 = twenties = 533 survivals, 0 deaths</li>
+      <li>3 = thirties = 336 survivals, 1 death</li>
+      <li>4 = forties = 353 survivals, 2 deaths</li>
+      <li>5 = fifties = 413 survivals, 4 deaths</li>
+      <li>6 = sixties = 276 survivals, 4 deaths</li>
+      <li>7 = seventies = 130 survivals, 8 deaths</li>
+      <li>8 = eighties = 86 survivals, 6 deaths</li>
+      <li>9 = nineties = 21 survivals, 3 deaths</li>
+      <li>10 = hundreds = 1 survival, 0 deaths</li>
+    </ul>
+    <img src="/static/img/province-pie.png" alt="">
+    <p>The province with highest frequency is Gyeonggi-do with 634 patients.</p>
+    <p>Patients by province</p>
+    <ul>
+      <li>Seoul: 500 patients</li>
+      <li>Busan: 121 patients</li>
+      <li>Daegu: 436 patients</li>
+      <li>Gwangju: 27 patients</li>
+      <li>Incheon: 87 patients</li>
+      <li>Daejeon: 39 patients</li>
+      <li>Ulsan: 42 patients</li>
+      <li>Sejong: 46 patients</li>
+      <li>Gyeonggi-do: 634 patients</li>
+      <li>Gangwon-do: 35 patients</li>
+      <li>Chungcheongbuk-do: 44 patients</li>
+      <li>Chungcheongnam-do: 139 patients</li>
+      <li>Jeollabuk-do: 17 patients</li>
+      <li>Jeollanam-do: 111 patients</li>
+      <li>Gyeongsangbuk-do: 436 patients</li>
+      <li>Gyeongsangnam-do: 111 patients</li>
+      <li>Jeju-do: 12 patients</li>
+    </ul>
+    <img src="/static/img/cluster-bar.png" alt="">
+    <p>The infection source with the highest frequency is "contact with patient". 881 patients were infected this way.
+    </p>
+    <p>Patients by infection source, or cluster tracing</p>
+    <ul>
+      <li>0 = Overseas inflow = 460 patients</li>
+      <li>1 = Contact with patient = 881 patients</li>
+      <li>2 = Seongdong-gu APT = 13 patients</li>
+      <li>3 = Etc = 507 patients</li>
+      <li>4 = Eunpyeong St. Mary's Hospital = 16 patients</li>
+      <li>5 = Shincheonji Church = 103 patients</li>
+      <li>6 = Dongan Church = 17 patients</li>
+      <li>7 = Guro-gu Call Center = 112 patients</li>
+      <li>8 = Onchun Church = 33 patients</li>
+      <li>9 = Cheongdo Daenam Hospital = 21 patients</li>
+      <li>10 = Suyeong-gu Kindergarten = 3 patients</li>
+      <li>11 = Ministry of Oceans and Fisheries = 28 patients</li>
+      <li>12 = Gym facility in Cheonan = 30 patients</li>
+      <li>13 = Gym facility in Sejong = 4 patients</li>
+      <li>14 = River of Grace Community Church = 1 patients</li>
+      <li>15 = Gyeongsan Seorin Nursing Home = 14 patients</li>
+      <li>16 = Gyeongsan Cham Joeun Community Center = 10 patients</li>
+      <li>17 = Gyeongsan Jeil Silver Town = 12 patients</li>
+      <li>18 = Bonghwa Pureun Nursing Home = 31 patients</li>
+      <li>19 = Pilgrimage to Israel = 2 patients</li>
+      <li>20 = Milal Shelter = 11 patients</li>
+      <li>21 = Geochang Church = 6 patients</li>
+      <li>22 = Changnyeong Coin Karaoke = 4 patients</li>
+    </ul>
+    <img src="/static/img/cluster-fatality.png" alt="">
+    <p>Patients who were infected in Cheongdo Daenam Hospital had the highest case fatality rate, 50%. 7 out of 14
+      patients
+      died.</p>
+    <p>Cross tabulation of infection source and fatality.</p>
+    <ul>
+      <li>0 = Overseas inflow = 460 survivals, 0 deaths</li>
+      <li>1 = Contact with patient = 878 survivals, 0 deaths</li>
+      <li>2 = Seongdong-gu APT = 13 survivals, 0 deaths</li>
+      <li>3 = Etc = 494 survivals, 13 deaths</li>
+      <li>4 = Eunpyeong St. Mary's Hospital = 16 survivals, 0 deaths</li>
+      <li>5 = Shincheonji Church = 101 survivals, 2 deaths</li>
+      <li>6 = Dongan Church = 17 survivals, 0 deaths</li>
+      <li>7 = Guro-gu Call Center = 111 survivals, 1 death</li>
+      <li>8 = Onchun Church = 33 survivals, 0 deaths</li>
+      <li>9 = Cheongdo Daenam Hospital = 14 survivals, 0 deaths</li>
+      <li>10 = Suyeong-gu Kindergarten = 3 survivals, 0 deaths</li>
+      <li>11 = Ministry of Oceans and Fisheries = 28 survivals, 0 deaths</li>
+      <li>12 = Gym facility in Cheonan = 30 survivals, 0 deaths</li>
+      <li>13 = Gym facility in Sejong = 4 survivals, 0 deaths</li>
+      <li>14 = River of Grace Community Church = 1 survival, 0 deaths</li>
+      <li>15 = Gyeongsan Seorin Nursing Home = 14 survivals, 0 deaths</li>
+      <li>16 = Gyeongsan Cham Joeun Community Center = 10 survivals, 0 deaths</li>
+      <li>17 = Gyeongsan Jeil Silver Town = 11 survivals, 0 deaths</li>
+      <li>18 = Bonghwa Pureun Nursing Home = 30 survivals, 1 death</li>
+      <li>19 = Pilgrimage to Israel = 2 survivals, 0 deaths</li>
+      <li>20 = Milal Shelter = 11 survivals, 0 deaths</li>
+      <li>21 = Geochang Church = 6 survivals, 0 deaths</li>
+      <li>22 = Changnyeong Coin Karaoke = 4 survivals, 0 deaths</li>
+    </ul>
   </section>
 
-  <section>
+  <!-- <section>
     <h2>Data Analysis</h2>
     <p>Rubric: Descriptive method</p>
-  </section>
+  </section> -->
 
 </body>
 
