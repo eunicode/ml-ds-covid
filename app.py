@@ -133,6 +133,11 @@ def main():
         prediction_prob = model.predict_proba(input_variables)[0][1]
         prediction_prob = round(prediction_prob * 100, 2)
         # prediction_prob = round((1 - prediction_prob) * 100)
+
+        predicted_status = "low"
+        if prediction_prob > 10:
+            predicted_status = "high"
+
         # Re-render the homepage, display previous input, prediction and prediction probability
         # Pass variables
         return flask.render_template(
@@ -144,6 +149,7 @@ def main():
                 "Province": province,
                 "Infection Case": infection_case,
             },
+            result_status=predicted_status,
             result=prediction,
             result_prob=prediction_prob,
         )

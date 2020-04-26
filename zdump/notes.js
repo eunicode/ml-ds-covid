@@ -60,6 +60,47 @@ https://flask.palletsprojects.com/en/1.1.x/installation/
 install flask
 
 --------------------------------------------------------------------
+HEROKU
+
+Getting Started on Heroku with Python
+https://devcenter.heroku.com/articles/getting-started-with-python#prepare-the-app
+https://github.com/heroku/python-getting-started
+
+Deploy the app
+https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app
+
+Deploying a Python Flask app on Heroku
+https://medium.com/the-andela-way/deploying-a-python-flask-app-to-heroku-41250bda27d0
+https://github.com/jokamjohn/bucket_api_heroku
+John Kagga 2017
+
+Step-by-Step Guide on Deploying a Simple Flask App to Heroku
+https://pybit.es/deploy-flask-heroku.html
+2017
+
+Deploy Python Flask App on Heroku
+https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/
+
+heroku create eflask-app
+
+--------------------------------------------------------------------
+Python
+https://devcenter.heroku.com/categories/python-support
+
+Deploying Python Applications with Gunicorn
+https://devcenter.heroku.com/articles/python-gunicorn
+
+Python Dependencies via Pip
+https://devcenter.heroku.com/articles/python-pip
+
+Specifying a Python Runtime
+https://devcenter.heroku.com/articles/python-runtimes
+
+Deploying with Git
+https://devcenter.heroku.com/articles/git
+
+The Procfile
+https://devcenter.heroku.com/articles/procfile
 
  */
 

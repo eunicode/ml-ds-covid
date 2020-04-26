@@ -13,9 +13,10 @@
   <h1>Covid-19 Fatality Prediction Web App for South Korean Hospital</h1>
 
   <section class="form-container">
-    <h2>Covid-19 Fatality Prediction Model</h2>
+    <h2>Covid-19 Fatality Prediction Form</h2>
     <h4>Select patient's epidemiological features to predict their probability of fatality from Covid-19. </h4>
-    <p>If their fatality probability is greater than 30%, they will be classified as high risk and put into ICU.</p>
+    <p>If their fatality probability is greater than 10%, they will be classified as high risk and immediately
+      transferred to the ICU.</p>
     <p class="rubric">Rubric: Non-descriptive method, decision-support functionality, interactive queries,
       implementation of
       machine-learning methods and algorithms</p>
@@ -34,17 +35,17 @@
       <div class="form-group">
         <label for="ageSelect">Select patient's age: </label>
         <select id="ageSelect" name="age">
-          <option value="0">> 10</option>
-          <option value="1">teens</option>
-          <option value="2">20s</option>
-          <option value="3">30s</option>
-          <option value="4">40s</option>
-          <option value="5">50s</option>
-          <option value="6">60s</option>
-          <option value="7">70s</option>
-          <option value="8">80s</option>
-          <option value="9">90s</option>
-          <option value="10">100s</option>
+          <option value="0">Less than 10</option>
+          <option value="1">Teens</option>
+          <option value="2">Twenties</option>
+          <option value="3">Thirties</option>
+          <option value="4">Forties</option>
+          <option value="5">Fifties</option>
+          <option value="6">Sixties</option>
+          <option value="7">Seventies</option>
+          <option value="8">Eighties</option>
+          <option value="9">Nineties</option>
+          <option value="10">Hundreds</option>
         </select>
       </div>
 
@@ -127,7 +128,10 @@
     <div class="result" align="center">
       {% if result is defined %}
       <h3 class="result-text">
-        Our model predicts that the patient has a {{ result_prob }}% chance of Covid-19
+        The patient is classified as {{ result_status }} risk for Covid-19 fatality.<br>Our model predicts that the
+        patient
+        has a
+        {{ result_prob }}% chance of Covid-19
         fatality.
       </h3>
       {% endif %}
@@ -156,10 +160,10 @@
     <p>Cross tabulation of sex and fatality: 1,253 females survived and 8 females died, while 1,038 males survived and
       20
       males died. </p>
-    <p>Males have a higher case fatality rate.</p>
+    <p>Males have a higher case fatality rate (1.89%) than females (0.63%).</p>
     <img src="/static/img/age-bar.png" alt="">
     <p>The twenties age group has the highest frequency in this dataset with 533 patients.</p>
-    <p>Patients by age group</p>
+    <p>Patients by age group:</p>
     <ul>
       <li>0 = under 10 = 40 patients</li>
       <li>1 = teens = 102 patients</li>
@@ -179,7 +183,7 @@
     <p>The second age range contains the most patients.</p>
     <img src="/static/img/age-fatality.png" alt="">
     <p>Patients in their nineties had the highest case fatality rate, 14.3% (3 out of 21).</p>
-    <p>Cross tabulation of age and fatality</p>
+    <p>Cross tabulation of age and fatality:</p>
     <ul>
       <li>0 = under 10 = 40 survivals, 0 deaths</li>
       <li>1 = teens = 102 survivals, 0 deaths</li>
@@ -195,7 +199,7 @@
     </ul>
     <img src="/static/img/province-pie.png" alt="">
     <p>The province with highest frequency is Gyeonggi-do with 634 patients.</p>
-    <p>Patients by province</p>
+    <p>Patients by province:</p>
     <ul>
       <li>Seoul: 500 patients</li>
       <li>Busan: 121 patients</li>
@@ -218,7 +222,7 @@
     <img src="/static/img/cluster-bar.png" alt="">
     <p>The infection source with the highest frequency is "contact with patient". 881 patients were infected this way.
     </p>
-    <p>Patients by infection source, or cluster tracing</p>
+    <p>Patients by infection source, or cluster tracing:</p>
     <ul>
       <li>0 = Overseas inflow = 460 patients</li>
       <li>1 = Contact with patient = 881 patients</li>
@@ -248,7 +252,7 @@
     <p>Patients who were infected in Cheongdo Daenam Hospital had the highest case fatality rate, 50%. 7 out of 14
       patients
       died.</p>
-    <p>Cross tabulation of infection source and fatality.</p>
+    <p>Cross tabulation of infection source and fatality:</p>
     <ul>
       <li>0 = Overseas inflow = 460 survivals, 0 deaths</li>
       <li>1 = Contact with patient = 878 survivals, 0 deaths</li>
@@ -274,6 +278,13 @@
       <li>21 = Geochang Church = 6 survivals, 0 deaths</li>
       <li>22 = Changnyeong Coin Karaoke = 4 survivals, 0 deaths</li>
     </ul>
+    <h4 align="center">Correlation Matrix of Variables</h4>
+    <img src="/static/img/correlation-matrix.png" alt="">
+    <p>Age and infection source has one of the highest correlation coefficient values. This may be explained by the fact
+      that several of the infection sources were nursing homes, senior community centers, and retirement communities.
+    </p>
+    <p>Age and fatality also has one of the highest correlation coefficient value. This aligns with reports that age is
+      linked to increased fatality rates. </p>
   </section>
 
   <!-- <section>

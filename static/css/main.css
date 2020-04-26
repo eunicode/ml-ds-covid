@@ -44,9 +44,13 @@ select {
   width: 100%;
 }
 
+legend {
+  font-size: 1.2em;
+}
+
 input[type="submit"] {
   border-radius: 5px;
-  margin: 1.5em 0 1em 0;
+  margin: 1.5em auto 1.5em auto;
   font-size: 1.2em;
 }
 
