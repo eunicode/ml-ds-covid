@@ -87,7 +87,7 @@ with open(f"model/gs_logistic_regression_model_1.pkl", "rb") as f:
 # rb = read binary
 # loaded_model = pickle.load(open("model/gs_logistic_regression_model_1.pkl", "rb"))
 
-# Make an app instance. `Flask` is a class
+# Make an app instance. `flask` is imported library. `Flask` is a class
 app = flask.Flask(__name__, template_folder="templates")
 # __name__ is a magic variable. Use whatever the current namespace is
 # `templates` - Flask automatically looks for this folder

@@ -66,8 +66,22 @@ Getting Started on Heroku with Python
 https://devcenter.heroku.com/articles/getting-started-with-python#prepare-the-app
 https://github.com/heroku/python-getting-started
 
+--------------------------------------------------------------------
+CHOOSE HEROKU URL
+
+Creating a named app
+https://devcenter.heroku.com/articles/creating-apps#creating-a-named-app
+
+`heroku create example` // example.herokuapp.com
+
+Renaming Apps from the CLI
+https://devcenter.heroku.com/articles/renaming-apps
+
+--------------------------------------------------------------------
 Deploy the app
 https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app
+
+`git push heroku main`
 
 Deploying a Python Flask app on Heroku
 https://medium.com/the-andela-way/deploying-a-python-flask-app-to-heroku-41250bda27d0
