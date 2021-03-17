@@ -60,7 +60,8 @@ https://flask.palletsprojects.com/en/1.1.x/installation/
 install flask
 
 --------------------------------------------------------------------
-HEROKU
+                              HEROKU
+--------------------------------------------------------------------
 
 Getting Started on Heroku with Python
 https://devcenter.heroku.com/articles/getting-started-with-python#prepare-the-app
@@ -115,6 +116,38 @@ https://devcenter.heroku.com/articles/git
 
 The Procfile
 https://devcenter.heroku.com/articles/procfile
+
+--------------------------------------------------------------------
+PUSH LOCAL CHANGES
+
+Push local changes
+https://devcenter.heroku.com/articles/getting-started-with-python#push-local-changes
+
+# Test locally. Visit application at http://localhost:5000/
+`heroku local` 
+
+`git add .`
+`git commit -m "Demo"`
+
+`git push heroku main`
+
+# Visit deployed site: https://covid-19-fatality-predictor.herokuapp.com/
+`heroku open`
+
+MY NOTES
+
+`git remote -v`
+heroku	https://git.heroku.com/covid-19-fatality-predictor.git (fetch)
+heroku	https://git.heroku.com/covid-19-fatality-predictor.git (push)
+origin	https://github.com/eunicode/ml-ds-js.git (fetch)
+origin	https://github.com/eunicode/ml-ds-js.git (push)
+
+`git push heroku main`
+error src refspec main does not match any
+error failed to push some refs to heroku
+
+Solution: `git push heroku master`
+
 
  */
 

@@ -10,11 +10,12 @@ User input is entered in the front-end of the web app and passed to the back-end
 
 There are also graphs and charts created with pandas, Matplotlib, and seaborn that visually summarize Korea’s Covid-19 patient data and data analysis.
 
-![Web app form](static/img/manual-1.png)
+![Web app form](docs/demo-3.png)
 
 ## Demo
 
 This site may take a while to load because it is hosted on Heroku's free plan and therefore gets unloaded from Heroku's server memory if there is no web traffic for a certain period.
+
 https://covid-19-fatality-predictor.herokuapp.com/
 
 <!-- ## Features -->
@@ -26,9 +27,11 @@ https://covid-19-fatality-predictor.herokuapp.com/
 - Flask
 - Jupyter Notebook
 
+<!-- ## Lessons Learned -->
+
 ## Setup
 
-Install Python 3 with the official installer (recommended).
+Install Python 3 with the official installer (recommended).<br />
 https://www.python.org/downloads/
 
 Or install using Homebrew package manager (macOS only).
@@ -38,7 +41,7 @@ brew update && brew upgrade
 brew install python3
 ```
 
-Install miniconda3 package from official website to use conda.
+Install miniconda3 package from official website to use conda.<br/>
 https://docs.conda.io/en/latest/miniconda.html
 
 Move to project directory
@@ -51,7 +54,7 @@ Create a virtual environment
 
 ```
 # If using venv:
-python -m venv env
+python3 -m venv env
 
 # If using conda:
 conda create --prefix ./env
@@ -85,7 +88,7 @@ pip install -r requirements.txt
 Start server
 
 ```
-python app.py
+python3 app.py
 ```
 
 Stop server
@@ -107,5 +110,3 @@ Stop server
 ```
 ctrl + c
 ```
-
-## Lessons Learned
