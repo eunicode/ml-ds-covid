@@ -1,6 +1,6 @@
 Flask==1.1.2
 gunicorn==20.0.4
-Jinja2==2.11.1
+Jinja2==2.11.3
 jupyter==1.0.0
 jupyter-client==6.1.2
 jupyter-console==6.1.0
